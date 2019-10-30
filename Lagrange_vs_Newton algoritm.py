@@ -2,22 +2,21 @@ import math
 import random
 import matplotlib.pyplot as plt
 
-#цикл
 def first():
 	yy = []
 	xx = []
 	yy2= []
-	#цикл
+	
 	x  = 0.15
 	forX = 0.3466 +0.4921*(x-0.3)/0.1 +0.0356*(x-0.3)*(x-0.2)/(2*0.1*0.1)-0.1116*(x-0.3)*(x-0.2)*(x-0.1)/(6*0.1*0.1*0.1) 
-    #цикл
+   
 	print('For x = 0.15 answer is ')
 	print(forX)
 	print('----------------CHECK--------------') 
 	print(math.cos(5*0.15-9))
 	print('----------------Error--------------')
 	print((math.fabs(forX - math.cos(5*0.15-9))))
-	#циклваываыв
+	
 	for i in range(0,1000):
 		x  = random.random()
 		xx.append(x) 
@@ -26,7 +25,6 @@ def first():
 		mathcos = math.cos(5*x-9)
 		yy2.append(mathcos)
 
-#циклпывавы
 	plt.scatter(xx,yy, c = 'blue', alpha = 1, label = 'Interpolation - Newton polynomial')
 	plt.scatter(xx,yy2, c = 'red', alpha = 1, label = 'Math fuction')
 	plt.title('Newton fuction vs math')
@@ -38,7 +36,8 @@ def first():
 	plt.ylim([-1,1])
 	plt.xlim([0,0.5])
 	plt.show()
-	 #функция для 2 задачи
+    
+    
 def second():
 	x = [0,0.1,0.2,0.3]
 	y = [0,0,0,0]
@@ -71,7 +70,6 @@ def second():
 		YY.append(LL)
 		YY2.append(LL2)
 
-	#рисуем график 
 	import matplotlib.pyplot as plt
 	plt.scatter(XX,YY, c = 'blue', alpha = 1, label = 'Math function')
 	plt.scatter(XX,YY2, c = 'red', alpha = 1, label = 'Lagrange fuction')
@@ -82,17 +80,17 @@ def second():
 	plt.style.use('ggplot')
 	plt.grid(True)
 	plt.show()
-#титулка	
+	
 print('----------------Create by Lysyi Pavlo KM-71--------------') 	
 print('Hello, this programm is create for runs a Interpolation - Newton polynomial and Lagrange fuction on cos(5x-9) in coordinate 0.15')
 print('Enter 1 to use Newton and 2 to use Lagrange')
 count = input()
-#провера на ошибки ввода 1/2
+
 try:
     count = int(count)
 except ValueError:
     print('Enter a number')
-#вызываем соответствующие функции
+
 if(count == 1):
 	first()
 if(count == 2):
